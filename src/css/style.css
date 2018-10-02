@@ -1,0 +1,18 @@
+
+@font-face {
+    font-family: 'BYekan';
+    src: url('../font/BYekan.eot');
+    src: url('../font/BYekan.woff');
+    src: url('../font/BYekan.ttf') format('truetype');
+}
+
+.myfont {
+    font-family: 'BYekan' !important;
+}
+
+.maryam{
+	color: red;
+}
+.mina{
+	background-color: blue;
+}
