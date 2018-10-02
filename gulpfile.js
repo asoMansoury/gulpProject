@@ -47,10 +47,10 @@ gulp.task('minifyCss',function(){
 });
 
 gulp.task('minifyjs',function(){
-    //return gulp.src('dist/js/scripts.js')
-           //.pipe(uglify())
-           //.pipe(rename({suffix:'.min'}))
-           //.pipe(gulp.dest('dist/js/'))
+    return gulp.src('dist/js/scripts.js')
+           .pipe(uglify())
+           .pipe(rename({suffix:'.min'}))
+           .pipe(gulp.dest('dist/js/'))
 });
 
 
@@ -63,3 +63,6 @@ gulp.task('minifyjs-WithPump',function(cb){
     ],cb);
 
 });
+
+
+gulp.task('default',['concat-css','concat-js','minifyCss','minifyjs-WithPump']);
