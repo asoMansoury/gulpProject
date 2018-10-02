@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     sourceMaps = require('gulp-sourcemaps'),
     cssmin = require('gulp-cssmin'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    uglify = require('gulp-uglify');
 
 
 var sourceCss = ['src/css/agency.css','src/style.css'];
@@ -43,4 +44,11 @@ gulp.task('minifyCss',function(){
            .pipe(cssmin({level:2}))
            .pipe(rename({suffix:'.min'}))
            .pipe(gulp.dest('dist/css'))
+});
+
+gulp.task('minifyjs',function(){
+    return gulp.src('dist/js/scripts.js')
+           .pipe(uglify())
+           .pipe(rename({suffix:'.min'}))
+           .pipe(gulp.dest('dist/js/'))
 });
