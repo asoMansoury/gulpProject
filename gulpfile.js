@@ -5,11 +5,13 @@ var gulp = require('gulp'),
     cssmin = require('gulp-cssmin'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
-    pump = require('pump');
+    pump = require('pump'),
+    sass = require('gulp-sass');
 
 var sourceCss = ['src/css/agency.css','src/style.css'];
 
 var sourceJs = ['src/js/agency.min.js','src/js/jqBootstrapValidation.js','src/js/contact_me.js'];
+var sourcescss = ['node_modules/bootstrap/scss/bootstrap.custom.scss'];
 //****************************** */
 
 
@@ -64,5 +66,11 @@ gulp.task('minifyjs-WithPump',function(cb){
 
 });
 
+gulp.task('sass',function(){
+    return gulp.src(sourcescss)
+            .pipe(sass().on('error',sass.logError))
+            .pipe(gulp.dest('dist/css/'))
+});
 
-gulp.task('default',['concat-css','concat-js','minifyCss','minifyjs-WithPump']);
+
+gulp.task('default',['concat-css','concat-js','minifyCss','minifyjs-WithPump','sass']);
