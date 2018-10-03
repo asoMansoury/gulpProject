@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     pump = require('pump'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    less = require('gulp-less');
 
 var sourceCss = ['src/css/agency.css','src/style.css'];
 
@@ -86,4 +87,11 @@ gulp.task('bootstrapjs',function(){
             .pipe(gulp.dest('dist/js'))
 });
 
-gulp.task('default',['concat-css','concat-js','minifyCss','minifyjs-WithPump','sass']);
+gulp.task('less',function(){
+    return gulp.src('src/less/styles.less')
+            .pipe(less())
+            .pipe(cssmin())
+            .pipe(gulp.dest('dist/css/'));
+});
+
+gulp.task('default',['concat-js','minifyCss','minifyjs-WithPump','sass','less']);
